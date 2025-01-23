@@ -3,6 +3,8 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Auth from './components/Auth'
 import Dashboard from './components/Dashboard'
 import Profile from './components/Profile'
+import Locations from './components/Locations'
+import Footer from './components/Footer'
 import { createClient } from '@supabase/supabase-js'
 
 const supabase = createClient(
@@ -28,7 +30,7 @@ export default function App() {
   }, [])
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen flex flex-col">
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Auth supabase={supabase} />} />
@@ -40,8 +42,13 @@ export default function App() {
             path="/profile" 
             element={session ? <Profile supabase={supabase} /> : <Auth supabase={supabase} />} 
           />
+          <Route 
+            path="/locations" 
+            element={session ? <Locations supabase={supabase} /> : <Auth supabase={supabase} />} 
+          />
         </Routes>
       </BrowserRouter>
+      <Footer />
     </div>
   )
 }

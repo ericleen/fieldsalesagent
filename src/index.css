@@ -8,5 +8,9 @@ body {
 }
 
 #root {
-  @apply min-h-screen;
+  @apply min-h-screen flex flex-col;
+}
+
+main {
+  @apply flex-1;
 }
